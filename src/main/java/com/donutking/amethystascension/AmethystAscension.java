@@ -114,7 +114,8 @@ public final class AmethystAscension implements ModInitializer {
                 .then(literal("rank").then(literal("set")
                     .then(argument("player", StringArgumentType.word())
                         .then(argument("rank", StringArgumentType.word()).executes(context -> {
-                            if (!context.getSource().getServer().getPlayerList().isOp(context.getSource().getPlayerOrException().getGameProfile())) {
+                            if (!context.getSource().getServer().getPlayerList().isOp(
+                                context.getSource().getPlayerOrException().nameAndId())) {
                                 context.getSource().sendFailure(Component.literal("Only an operator can change ranks.")); return 0;
                             }
                             String name = StringArgumentType.getString(context, "player");
